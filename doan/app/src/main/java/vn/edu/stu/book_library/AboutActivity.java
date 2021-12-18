@@ -60,6 +60,29 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
     }
 
 
+ private void makePhoneCall() {
+        String phone = aboutPhone.getText().toString();
+        if (ContextCompat.checkSelfPermission(AboutActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(AboutActivity.this,
+                    new String[]{Manifest.permission.CALL_PHONE}, Request_call);
+        } else {
+            String dial = "tel:" + phone;
+            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == Request_call) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                makePhoneCall();
+            } else {
+                Toast.makeText(AboutActivity.this, "Quyền bị từ chối!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
 
 
