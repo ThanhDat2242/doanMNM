@@ -88,17 +88,7 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
 
 
 
- @Override
-    public void onMapReady(GoogleMap googleMap) {
 
-
-        gMap = googleMap;
-        LatLng DHCNSG = new LatLng(10.7380096287,106.677825451);
-        gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(DHCNSG,13));
-        gMap.addMarker(new MarkerOptions().position(DHCNSG).title("Đại học công nghệ Sài Gòn"));
-
-
-    }
 
     String name = "Cao Chiến Hào";
     String id = "DH51804107";
@@ -118,7 +108,45 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
     };
 
 
+@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.option_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.mnuAbout:
+                Intent intent1 = new Intent(
+                        AboutActivity.this,
+                        AboutActivity.class
+                );
+                startActivity(intent1);
+                break;
+            case R.id.mnuExit:
+                finish();
+                break;
+            case R.id.mnuBook:
+                Intent intent2 = new Intent(
+                        AboutActivity.this,
+                        BookActivity.class
+                );
+                startActivity(intent2);
+                break;
+            case R.id.mnuType:
+                Intent intent3 = new Intent(
+                        AboutActivity.this,
+                        TypeActivity.class
+                );
+                startActivity(intent3);
+                break;
+            default:
+                txtAction.setText("");
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
 
