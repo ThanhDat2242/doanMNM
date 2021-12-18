@@ -65,6 +65,17 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
 
 
 
+ @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+
+        gMap = googleMap;
+        LatLng DHCNSG = new LatLng(10.7380096287,106.677825451);
+        gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(DHCNSG,13));
+        gMap.addMarker(new MarkerOptions().position(DHCNSG).title("Đại học công nghệ Sài Gòn"));
+
+
+    }
 
     String name = "Cao Chiến Hào";
     String id = "DH51804107";
