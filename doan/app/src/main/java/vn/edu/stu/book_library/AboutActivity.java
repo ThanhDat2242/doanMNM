@@ -86,7 +86,7 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
 
 
 
-
+    
 
 
     String name = "Cao Chiến Hào";
@@ -105,6 +105,9 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
             startActivity(callIntent);
         }
     };
+
+
+
 
 
 
